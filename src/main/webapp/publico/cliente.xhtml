@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Cadastro de Clientes</title>
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Clientes</h1>
+	<h:form id="cadastro">
+		<h:messages/>
+		
+		<h:inputHidden value="#{clienteBean.cliente.codigo}" />
+		
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Razão Social:" for="razaoSocial" />
+			<h:inputText id="razaoSocial" label="Razão Social" value="#{clienteBean.cliente.razaoSocial}" size="100"
+				maxlength="100" required="true" requiredMessage="Você não tem Razão Social?">
+				<f:validateLength minimum="10" maximum="30" />
+			</h:inputText>
+
+			<h:outputLabel value="Nome Fantasia:" for="nomeFantasia" />
+			<h:inputText id="nomeFantasia" label="Nome Fantasia" value="#{clienteBean.cliente.nomeFantasia}" size="100"
+				maxlength="100" required="true" requiredMessage="Você não tem Nome Fantasia?">
+				<f:validateLength minimum="10" maximum="30" />
+			</h:inputText>			
+
+			<h:outputLabel value="CNPJ / CPF:" for="cnpjCpf" />
+			<h:inputText id="cnpjCpf" label="CNPJ / CPF" value="#{clienteBean.cliente.cnpjCpf}" size="50"
+				maxlength="14" required="true" requiredMessage="Você não tem CNPJ ou CPF?">
+				<f:validateLength minimum="10" maximum="14" />
+			</h:inputText>						
+
+			<h:outputLabel value="Telefone:" for="telefone" />
+			<h:inputText id="telefone" label="Telefone" value="#{clienteBean.cliente.telefone}" size="50"
+				maxlength="50" required="true" requiredMessage="Você não tem Telefone?">
+				<f:validateLength minimum="10" maximum="20" />
+			</h:inputText>			
+			
+			<h:outputLabel value="Status" for="status" />
+			<h:selectOneMenu id="idioma" value="#{clienteBean.cliente.status}">
+				<f:selectItem itemValue="A" itemLabel="ATIVO" />
+				<f:selectItem itemValue="I" itemLabel="INATIVO" />
+			</h:selectOneMenu>			
+			
+		</h:panelGrid>
+		
+		<h:commandButton action="#{clienteBean.salvar}" value="Salvar" />
+	</h:form>
+</h:body>
+	
+</html>
